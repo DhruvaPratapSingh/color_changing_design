@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: rgb(77, 75, 75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.loader{
+    position: relative;
+    transform: skewY(-15deg) translateX(50px) translateY(50px);
+    animation : animateColor 2.5s linear infinite ;
+}
+@keyframes animateColor{
+    0%{
+        filter :hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+.loader::before{
+    content: '';
+    position: absolute;
+    top: 300px;
+    width: 300px;
+    height: 200px;
+    background: rgba(0,0,0,0.1);
+    /* background: red; */
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    filter: blur(20px);
+
+}
+.loader span::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 150px;
+    left: -150px;
+    top: 0;
+    background: rgb(54, 52, 52);
+    transform: skewY(45deg);
+    transform-origin: right;
+    transition: 0.5s;
+}
+.loader span:hover::before{
+    background: rgb(0, 221, 255) ;
+    transition: 0s;
+}
+span::after{
+    content: '';
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    top: -150px;
+    left: 0;
+    background: rgb(51, 52, 51);
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+   
+}
+span:hover::after{
+    background: rgb(0, 234, 255);
+    transition: 0s;
+}
+span{
+    position: relative;
+    height: 40px;
+    width: 200px;
+    display: block;
+    background:rgb(67, 66, 66);
+    transition: 0.5s;
+    z-index: var(--i);
+    animation: animate 5s ease-in-out infinite;
+    animation-delay: calc(-1s *var(--i));
+}
+@keyframes animate{
+    0%,100%{
+        transform: translateX(-70px);
+    }
+    50%{
+        transform: translateX(70px);
+    }
+}
+span:hover{
+    background: rgb(0, 221, 255);
+    transition: 0s;
+}
